@@ -60,7 +60,7 @@ class MovieDetails {
     String ? tagline;
     String ? title;
     bool ? video;
-    int ? voteAverage;
+    double ? voteAverage;
     int ? voteCount;
 
     factory MovieDetails.fromJson(Map<String, dynamic> json) => MovieDetails(

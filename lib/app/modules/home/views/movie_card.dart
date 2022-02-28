@@ -79,7 +79,7 @@ class MovieCard extends StatelessWidget {
                             children: [
                               const Icon(
                                 Icons.star,
-                                color: Colors.orange,
+                                color: Colors.amber,
                                 size: 18,
                               ),
                               Text(
