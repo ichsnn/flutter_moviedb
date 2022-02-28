@@ -20,8 +20,16 @@ class DetailsView extends GetView<DetailsController> {
           backgroundColor: Color.fromARGB(255, 25, 25, 50),
           body: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Container(
-              color: Colors.blue,
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.amber.shade500,
+                ),
+                Expanded(
+                    child: Container(
+                  color: Colors.green.shade50,
+                ))
+              ],
             ),
           ),
         ));
