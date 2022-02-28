@@ -1,4 +1,4 @@
-import 'package:flutter_moviedb/env/api-key.dart';
+import 'package:flutter_moviedb/app/env/api-key.dart';
 import 'package:get/get.dart';
 
 class MovieDetailsService extends GetConnect {
