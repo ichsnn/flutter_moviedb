@@ -1,4 +1,4 @@
-import 'package:flutter_moviedb/app/env/api-key.dart';
+import 'package:flutter_moviedb/app/constant/api_key.dart';
 import 'package:get/get.dart';
 
 class MovieDetailsService extends GetConnect {
@@ -12,15 +12,11 @@ class MovieDetailsService extends GetConnect {
     if(responseMovie.status.hasError) {
       return Future.error(responseMovie.statusText!);
     }
-    
+
     if(responseCredits.status.hasError) {
       return Future.error(responseCredits.statusText!);
     }
 
     return [responseMovie.body, responseCredits.body];
-    // if(response.status.hasError) {
-    //   return Future.error(response.statusText!);
-    // }
-    // return response.body;
   }
 }
