@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_moviedb/app/data/movie-credits.dart';
 import 'package:flutter_moviedb/app/data/movie-details.dart';
+import 'package:flutter_moviedb/app/modules/details/views/cast_card.dart';
 import 'package:flutter_moviedb/app/utils/utils.dart';
 
 class MovieDetailBody extends StatelessWidget {
@@ -54,15 +55,12 @@ class MovieDetailBody extends StatelessWidget {
     );
 
     const TextStyle crewJobStyle = TextStyle(
-        fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white);
+        fontSize: 14, fontWeight: FontWeight.w400, color: Colors.white);
 
     return ListView(
       children: [
-        SizedBox(
-          width: 500,
-          child: Image.network(
-              'https://image.tmdb.org/t/p/w500/${movieDetails.posterPath}'),
-        ),
+        Image.network(
+            'https://image.tmdb.org/t/p/w500/${movieDetails.backdropPath}', width: double.infinity,),
         Padding(
           padding: const EdgeInsets.fromLTRB(8, 24, 8, 20),
           child: Column(
@@ -70,7 +68,7 @@ class MovieDetailBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 4),
+                padding: const EdgeInsets.only(bottom: 8),
                 child: Text(
                   "${movieDetails.title} (${movieDetails.releaseDate!.year})",
                   style: titleStyle,
@@ -105,7 +103,7 @@ class MovieDetailBody extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.only(bottom: 24),
                 child: Text(
                   '${movieDetails.overview}',
                   style: overviewStyle,
@@ -127,10 +125,24 @@ class MovieDetailBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Top Cast')
+              const Text(
+                'Top Cast',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600),
+              ),
+              Wrap(
+                children: [
+                  CastCard(cast: Cast.fromJson(movieCredits.cast![0].toJson())),
+                  CastCard(cast: Cast.fromJson(movieCredits.cast![1].toJson())),
+                  CastCard(cast: Cast.fromJson(movieCredits.cast![2].toJson())),
+                  CastCard(cast: Cast.fromJson(movieCredits.cast![4].toJson()))
+                ],
+              )
             ],
           ),
-        )
+        ),
       ],
     );
   }
