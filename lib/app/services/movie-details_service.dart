@@ -3,12 +3,24 @@ import 'package:get/get.dart';
 
 class MovieDetailsService extends GetConnect {
 
-  Future<dynamic> fetchMovie(String movieID) async {
-    final response = await get('https://api.themoviedb.org/3/movie/$movieID?api_key=$API_KEY');
+  Future<List<dynamic>> fetchMovie(String movieID) async {
+    final responseMovie = await get('https://api.themoviedb.org/3/movie/$movieID?api_key=$API_KEY');
 
-    if(response.status.hasError) {
-      return Future.error(response.statusText!);
+    final responseCredits = await get(
+        'https://api.themoviedb.org/3/movie/$movieID/credits?api_key=$API_KEY');
+
+    if(responseMovie.status.hasError) {
+      return Future.error(responseMovie.statusText!);
     }
-    return response.body;
+    
+    if(responseCredits.status.hasError) {
+      return Future.error(responseCredits.statusText!);
+    }
+
+    return [responseMovie.body, responseCredits.body];
+    // if(response.status.hasError) {
+    //   return Future.error(response.statusText!);
+    // }
+    // return response.body;
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter_moviedb/app/services/movie-credits_service.dart';
 import 'package:flutter_moviedb/app/services/movie-details_service.dart';
 import 'package:get/get.dart';
 
-class DetailsController extends GetxController with StateMixin {
+class DetailsController extends GetxController with StateMixin<List> {
   @override
   void onInit() {
     super.onInit();
