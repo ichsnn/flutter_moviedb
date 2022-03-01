@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -20,9 +19,6 @@ class HomeView extends GetView<HomeController> {
             itemCount: data!.length,
             itemBuilder: (context, index) => MovieCard(movie: data[index]),
           )),
-      // body: ListView.builder(
-      //     itemCount: 10,
-      //     itemBuilder: (context, index) => MovieCard())
     );
   }
 }
